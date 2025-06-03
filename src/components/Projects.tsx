@@ -2,49 +2,53 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Bot, Globe, Smartphone, Brain } from "lucide-react";
+import { ExternalLink, Github, Bot, Globe, Smartphone, Brain, TrendingUp, DollarSign } from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
-      title: "AI-Powered Content Pipeline",
-      description: "Automated content generation and optimization system using GPT-4 and custom fine-tuned models for enhanced productivity.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-      tech: ["React", "Node.js", "OpenAI API", "PostgreSQL", "Docker"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://demo.example.com",
-      category: "AI/LLM",
-      icon: <Bot className="w-5 h-5" />
-    },
-    {
-      title: "Smart Workflow Automation",
-      description: "Enterprise-grade workflow automation platform with LLM-powered decision making and natural language task definitions.",
+      title: "Enterprise Workflow Revolution",
+      description: "Transformed a Fortune 500 company's manual approval process into an AI-powered system, reducing processing time by 80% and saving $2M annually.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      tech: ["Next.js", "TypeScript", "Prisma", "LangChain", "AWS"],
+      tech: ["Next.js", "TypeScript", "OpenAI API", "PostgreSQL", "Process Mining"],
       githubUrl: "https://github.com",
       liveUrl: "https://demo.example.com",
-      category: "Web App",
-      icon: <Globe className="w-5 h-5" />
+      category: "Business Impact",
+      icon: <TrendingUp className="w-5 h-5" />,
+      impact: "$2M Annual Savings"
     },
     {
-      title: "Intelligent Code Assistant",
-      description: "VS Code extension that provides contextual code suggestions and refactoring recommendations using advanced language models.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-      tech: ["TypeScript", "VS Code API", "Claude API", "Webpack"],
+      title: "AI-Powered Content Pipeline",
+      description: "Built an intelligent content generation system that understands business context, reducing content creation costs by 70% while improving quality metrics.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+      tech: ["React", "Node.js", "OpenAI API", "LangChain", "Business Analytics"],
       githubUrl: "https://github.com",
-      liveUrl: "https://marketplace.visualstudio.com",
-      category: "Extension",
-      icon: <Brain className="w-5 h-5" />
+      liveUrl: "https://demo.example.com",
+      category: "ROI Solution",
+      icon: <Bot className="w-5 h-5" />,
+      impact: "70% Cost Reduction"
     },
     {
-      title: "Mobile LLM Chat App",
-      description: "Cross-platform mobile application with offline LLM capabilities and seamless cloud synchronization for enhanced user experience.",
+      title: "Smart Decision Platform",
+      description: "Created a data-driven decision platform that combines business KPIs with AI insights, helping executives make informed decisions 5x faster.",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+      tech: ["Vue.js", "Python", "Claude API", "Business Intelligence", "Data Viz"],
+      githubUrl: "https://github.com",
+      liveUrl: "https://demo.example.com",
+      category: "Executive Tool",
+      icon: <Brain className="w-5 h-5" />,
+      impact: "5x Faster Decisions"
+    },
+    {
+      title: "Customer Success Automation",
+      description: "Designed an end-to-end customer onboarding system that increased retention by 45% and reduced support tickets by 60% through intelligent automation.",
       image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
-      tech: ["React Native", "Expo", "SQLite", "Hugging Face", "Firebase"],
+      tech: ["React Native", "Firebase", "Customer Analytics", "Process Automation"],
       githubUrl: "https://github.com",
       liveUrl: "https://apps.apple.com",
-      category: "Mobile",
-      icon: <Smartphone className="w-5 h-5" />
+      category: "Growth Engine",
+      icon: <Smartphone className="w-5 h-5" />,
+      impact: "45% Retention Boost"
     }
   ];
 
@@ -53,10 +57,10 @@ const Projects = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Featured Projects
+            Business Transformation Stories
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Showcasing innovative solutions that blend cutting-edge technology with intelligent automation
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Real solutions that delivered measurable business impact. Each project combines technical innovation with strategic business thinking.
           </p>
         </div>
         
@@ -73,6 +77,12 @@ const Projects = () => {
                   <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm">
                     {project.icon}
                     <span className="ml-2">{project.category}</span>
+                  </Badge>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <Badge className="bg-green-500 hover:bg-green-600 text-white">
+                    <DollarSign className="w-3 h-3 mr-1" />
+                    {project.impact}
                   </Badge>
                 </div>
               </div>
@@ -105,7 +115,7 @@ const Projects = () => {
                   <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700" asChild>
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
+                      Case Study
                     </a>
                   </Button>
                 </div>

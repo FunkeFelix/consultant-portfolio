@@ -2,10 +2,20 @@
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code, Database, Cloud, Brain, Smartphone, Globe } from "lucide-react";
+import { Code, Database, Cloud, Brain, Building2, TrendingUp, Users, Zap, Target, BarChart3 } from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
+    {
+      title: "Business Strategy",
+      icon: <Building2 className="w-6 h-6" />,
+      skills: [
+        { name: "Process Optimization", level: 95 },
+        { name: "ROI Analysis", level: 90 },
+        { name: "Business Strategy", level: 95 },
+        { name: "Stakeholder Management", level: 88 }
+      ]
+    },
     {
       title: "Frontend Development",
       icon: <Code className="w-6 h-6" />,
@@ -27,50 +37,43 @@ const Skills = () => {
       ]
     },
     {
-      title: "Cloud & DevOps",
-      icon: <Cloud className="w-6 h-6" />,
-      skills: [
-        { name: "AWS/Azure", level: 85 },
-        { name: "Docker", level: 88 },
-        { name: "Kubernetes", level: 75 },
-        { name: "CI/CD", level: 80 }
-      ]
-    },
-    {
       title: "AI & LLM Integration",
       icon: <Brain className="w-6 h-6" />,
       skills: [
         { name: "OpenAI API", level: 95 },
         { name: "LangChain", level: 90 },
-        { name: "Hugging Face", level: 85 },
-        { name: "Vector DBs", level: 80 }
+        { name: "Workflow Automation", level: 95 },
+        { name: "Process Intelligence", level: 85 }
       ]
     },
     {
-      title: "Mobile Development",
-      icon: <Smartphone className="w-6 h-6" />,
+      title: "Cloud & DevOps",
+      icon: <Cloud className="w-6 h-6" />,
       skills: [
-        { name: "React Native", level: 88 },
-        { name: "Expo", level: 90 },
-        { name: "Flutter", level: 75 },
-        { name: "Native APIs", level: 80 }
+        { name: "AWS/Azure", level: 85 },
+        { name: "Docker", level: 88 },
+        { name: "CI/CD", level: 80 },
+        { name: "Infrastructure", level: 75 }
       ]
     },
     {
-      title: "Web Technologies",
-      icon: <Globe className="w-6 h-6" />,
+      title: "Analytics & Insights",
+      icon: <BarChart3 className="w-6 h-6" />,
       skills: [
-        { name: "GraphQL", level: 85 },
-        { name: "REST APIs", level: 95 },
-        { name: "WebSockets", level: 80 },
-        { name: "PWAs", level: 85 }
+        { name: "Data Analysis", level: 88 },
+        { name: "Performance Metrics", level: 90 },
+        { name: "Business Intelligence", level: 85 },
+        { name: "Cost Optimization", level: 80 }
       ]
     }
   ];
 
-  const tools = [
-    "VS Code", "Git", "Figma", "Postman", "Vercel", "Supabase", 
-    "Firebase", "Stripe", "Linear", "Notion", "Slack", "Discord"
+  const businessTools = [
+    "Figma", "Notion", "Linear", "Slack", "Microsoft Office", "Google Workspace"
+  ];
+
+  const techTools = [
+    "VS Code", "Git", "Postman", "Vercel", "Supabase", "Firebase", "Stripe"
   ];
 
   return (
@@ -78,11 +81,56 @@ const Skills = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Skills & Expertise
+            The Perfect Combination
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Comprehensive technical skills spanning modern web development and AI integration
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Business acumen meets technical excellence. I understand both the <strong>why</strong> and the <strong>how</strong> behind every solution.
           </p>
+        </div>
+
+        {/* Value Proposition Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+          <Card className="text-center border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50">
+            <CardHeader>
+              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mb-4">
+                <Target className="w-8 h-8 text-white" />
+              </div>
+              <CardTitle className="text-lg">Strategic Thinking</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-600 text-sm">
+                My business background ensures every technical solution aligns with company goals and delivers measurable ROI.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center border-0 shadow-lg bg-gradient-to-br from-indigo-50 to-purple-50">
+            <CardHeader>
+              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mb-4">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <CardTitle className="text-lg">Stakeholder Bridge</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-600 text-sm">
+                I translate complex technical concepts into business language that executives and teams can understand and act upon.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center border-0 shadow-lg bg-gradient-to-br from-purple-50 to-pink-50">
+            <CardHeader>
+              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mb-4">
+                <TrendingUp className="w-8 h-8 text-white" />
+              </div>
+              <CardTitle className="text-lg">Impact Focused</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-600 text-sm">
+                Every line of code I write serves a business purpose. I optimize for outcomes, not just technical elegance.
+              </p>
+            </CardContent>
+          </Card>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
@@ -113,14 +161,28 @@ const Skills = () => {
           ))}
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Tools & Technologies</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {tools.map((tool, index) => (
-              <Badge key={index} variant="secondary" className="text-sm py-2 px-4 bg-white/80 hover:bg-white transition-colors">
-                {tool}
-              </Badge>
-            ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Business Tools</h3>
+              <div className="flex flex-wrap justify-center gap-3">
+                {businessTools.map((tool, index) => (
+                  <Badge key={index} variant="secondary" className="text-sm py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-colors">
+                    {tool}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Development Tools</h3>
+              <div className="flex flex-wrap justify-center gap-3">
+                {techTools.map((tool, index) => (
+                  <Badge key={index} variant="secondary" className="text-sm py-2 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition-colors">
+                    {tool}
+                  </Badge>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
