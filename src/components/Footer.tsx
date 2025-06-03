@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="p-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg">
               <Code className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold">DevPortfolio</span>
+            <span className="text-xl font-bold">Felix Funke</span>
           </div>
           
           <p className="text-slate-400 mb-6 max-w-md mx-auto">
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
           
           <div className="mt-6 pt-6 border-t border-slate-800 text-slate-500 text-sm">
-            © 2024 DevPortfolio. All rights reserved.
+            © 2025 Felix Funke. All rights reserved.
           </div>
         </div>
       </div>

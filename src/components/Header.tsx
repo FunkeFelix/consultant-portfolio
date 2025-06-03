@@ -39,7 +39,7 @@ const Header = () => {
             <div className="p-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg">
               <Code className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-slate-900">DevPortfolio</span>
+            <span className="text-xl font-bold text-slate-900">Felix Funke</span>
           </div>
           
           {/* Desktop Navigation */}
