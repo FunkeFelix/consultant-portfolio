@@ -1,5 +1,6 @@
 
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ChevronDown, Code2, Brain, Zap, Building2, TrendingUp, Users } from "lucide-react";
 
 const Hero = () => {
@@ -17,6 +18,20 @@ const Hero = () => {
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-5xl mx-auto">
+          {/* Profile Image */}
+          <div className="mb-8 flex justify-center">
+            <Avatar className="w-32 h-32 border-4 border-white shadow-2xl ring-4 ring-blue-200/50">
+              <AvatarImage 
+                src="/lovable-uploads/4cb0f401-3444-4ddf-8f04-63e33986d525.png" 
+                alt="Profile"
+                className="object-cover"
+              />
+              <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-blue-600 to-indigo-600 text-white">
+                JD
+              </AvatarFallback>
+            </Avatar>
+          </div>
+
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
             <Building2 className="w-4 h-4 text-blue-600" />
