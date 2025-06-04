@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
               <img
-                src="public/logo.png"
+                src={`${import.meta.env.BASE_URL}/logo.png`}
                 alt="Logo"
                 className="w-8 h-8 rounded-full"
               />
