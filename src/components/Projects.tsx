@@ -167,7 +167,8 @@ const Projects = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4">
+
+                <div className="absolute top-4 left-4 flex flex-col space-y-2 md:hidden">
                   <Badge
                     variant="secondary"
                     className="bg-white/90 backdrop-blur-sm"
@@ -175,12 +176,26 @@ const Projects = () => {
                     {project.icon}
                     <span className="ml-2">{project.category}</span>
                   </Badge>
-                </div>
-                <div className="absolute top-4 right-4">
                   <Badge className="bg-green-500 hover:bg-green-600 text-white">
-                    <DollarSign className="w-3 h-3 mr-1" />
                     {project.impact}
                   </Badge>
+                </div>
+
+                <div className="hidden md:block">
+                  <div className="absolute top-4 left-4">
+                    <Badge
+                      variant="secondary"
+                      className="bg-white/90 backdrop-blur-sm"
+                    >
+                      {project.icon}
+                      <span className="ml-2">{project.category}</span>
+                    </Badge>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-green-500 hover:bg-green-600 text-white">
+                      {project.impact}
+                    </Badge>
+                  </div>
                 </div>
               </div>
 
