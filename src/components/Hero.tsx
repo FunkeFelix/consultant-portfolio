@@ -27,7 +27,7 @@ const Hero = () => {
           <div className="mb-8 flex justify-center">
             <Avatar className="w-32 h-32 border-4 border-white shadow-2xl ring-4 ring-blue-200/50">
               <AvatarImage
-                src="/lovable-uploads/4cb0f401-3444-4ddf-8f04-63e33986d525.png"
+                src="/profile_image.png"
                 alt="Profile"
                 className="object-cover"
               />
