@@ -2,7 +2,7 @@
   "name": "felix-funke-consultant-portfolio",
   "private": true,
   "version": "1.0.0",
-  "homepage": "https://FunkeFelix.github.io/consultant-portfolio",
+  "homepage": "https://funkefelix.github.io/consultant-portfolio/",
   "description": "A portfolio website for Felix Funke, showcasing my work as a consultant.",
   "type": "module",
   "scripts": {
