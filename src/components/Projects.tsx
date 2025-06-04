@@ -69,7 +69,7 @@ const Projects = () => {
       impact: "25 % Performance Gain",
     },
     {
-      title: "Conversion-Optimisation Engine",
+      title: "Conversion-Optimisation for Handelsblatt",
       description:
         "Implemented data-driven A/B testing and UX tweaks for Europe’s leading economic media outlet, lifting subscription conversions by 15 %.",
       image:
