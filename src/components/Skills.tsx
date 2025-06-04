@@ -1,90 +1,156 @@
-
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code, Database, Cloud, Brain, Building2, TrendingUp, Users, Zap, Target, BarChart3 } from "lucide-react";
+import {
+  Code,
+  Database,
+  Cloud,
+  Brain,
+  Building2,
+  TrendingUp,
+  Users,
+  Zap,
+  Target,
+  BarChart3,
+  Smartphone,
+  Lock,
+} from "lucide-react";
+import { ReactElement } from "react";
 
 const Skills = () => {
-  const skillCategories = [
+  interface Skill {
+    name: string;
+    level: number;
+  }
+
+  interface SkillCategory {
+    title: string;
+    icon: ReactElement;
+    skills: Skill[];
+  }
+
+  const skillCategories: SkillCategory[] = [
     {
-      title: "Business Strategy",
+      title: "Business & Product Strategy",
       icon: <Building2 className="w-6 h-6" />,
       skills: [
-        { name: "Process Optimization", level: 95 },
-        { name: "ROI Analysis", level: 90 },
-        { name: "Business Strategy", level: 95 },
-        { name: "Stakeholder Management", level: 88 }
-      ]
+        { name: "Process Automation", level: 95 },
+        { name: "Technical Consulting", level: 92 },
+        { name: "Stakeholder Management", level: 90 },
+        { name: "Product Management", level: 88 },
+        { name: "Business Analysis", level: 90 },
+        { name: "Agile Methodologies", level: 85 },
+        { name: "Data-Driven Decision Making", level: 90 },
+      ],
     },
     {
       title: "Frontend Development",
       icon: <Code className="w-6 h-6" />,
       skills: [
-        { name: "React/Next.js", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Tailwind CSS", level: 95 },
-        { name: "Vue.js", level: 80 }
-      ]
+        { name: "Next.js & React", level: 95 },
+        { name: "TypeScript", level: 95 },
+        { name: "Tailwind CSS", level: 100 },
+        { name: "Shadcn/ui", level: 100 },
+        { name: "Vue.js", level: 80 },
+        { name: "HTML & CSS", level: 95 },
+        { name: "Angular", level: 60 },
+      ],
     },
     {
       title: "Backend & Database",
       icon: <Database className="w-6 h-6" />,
       skills: [
         { name: "Node.js", level: 90 },
-        { name: "Python", level: 85 },
-        { name: "PostgreSQL", level: 88 },
-        { name: "MongoDB", level: 82 }
-      ]
+        { name: "Express.js", level: 88 },
+        { name: "Supabase/PostgreSQL", level: 90 },
+        { name: "MongoDB", level: 85 },
+        { name: "Python", level: 50 },
+        { name: "FastAPI", level: 50 },
+        { name: "GraphQL", level: 70 },
+      ],
+    },
+    {
+      title: "Mobile Development",
+      icon: <Smartphone className="w-6 h-6" />,
+      skills: [
+        { name: "Flutter", level: 95 },
+        { name: "Bloc & Provider", level: 92 },
+        { name: "Firebase Integration", level: 93 },
+        { name: "iOS Deployment", level: 90 },
+      ],
     },
     {
       title: "AI & LLM Integration",
       icon: <Brain className="w-6 h-6" />,
       skills: [
-        { name: "OpenAI API", level: 95 },
+        { name: "OpenAI & GPT Models", level: 95 },
+        { name: "Generative AI Workflows", level: 93 },
         { name: "LangChain", level: 90 },
-        { name: "Workflow Automation", level: 95 },
-        { name: "Process Intelligence", level: 85 }
-      ]
+        { name: "LiteLLM", level: 60 },
+        { name: "LLM UX", level: 95 },
+      ],
     },
     {
       title: "Cloud & DevOps",
       icon: <Cloud className="w-6 h-6" />,
       skills: [
-        { name: "AWS/Azure", level: 85 },
-        { name: "Docker", level: 88 },
-        { name: "CI/CD", level: 80 },
-        { name: "Infrastructure", level: 75 }
-      ]
+        { name: "Google Cloud Platform", level: 90 },
+        { name: "AWS Lambda & S3", level: 85 },
+        { name: "Docker & Kubernetes", level: 60 },
+        { name: "CI/CD (GitHub Actions)", level: 90 },
+        { name: "Infrastructure as Code", level: 60 },
+      ],
     },
     {
-      title: "Analytics & Insights",
-      icon: <BarChart3 className="w-6 h-6" />,
+      title: "Security & Authentication",
+      icon: <Lock className="w-6 h-6" />,
       skills: [
-        { name: "Data Analysis", level: 88 },
-        { name: "Performance Metrics", level: 90 },
-        { name: "Business Intelligence", level: 85 },
-        { name: "Cost Optimization", level: 80 }
-      ]
-    }
+        { name: "Firebase Auth", level: 95 },
+        { name: "Supabase Auth", level: 95 },
+        { name: "OAuth & PKCE", level: 90 },
+        { name: "Role-Based Access Control", level: 90 },
+      ],
+    },
   ];
-
   const businessTools = [
-    "Figma", "Notion", "Linear", "Slack", "Microsoft Office", "Google Workspace"
+    "Figma",
+    "Notion",
+    "Slack",
+    "GitHub Projects",
+    "Google Workspace",
+    "Microsoft Teams",
+    "Jira",
   ];
 
   const techTools = [
-    "VS Code", "Git", "Postman", "Vercel", "Supabase", "Firebase", "Stripe"
+    "VS Code",
+    "GitHub",
+    "GitLab",
+    "Postman",
+    "Vercel",
+    "Supabase",
+    "Firebase",
+    "Docker",
+    "Terraform",
+    "Stripe",
+    "Twilio",
+    "RevenueCat",
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section
+      id="skills"
+      className="py-20 bg-gradient-to-br from-slate-50 to-blue-50"
+    >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             The Perfect Combination
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Business acumen meets technical excellence. I understand both the <strong>why</strong> and the <strong>how</strong> behind every solution.
+            Business acumen meets technical excellence. I understand both the{" "}
+            <strong>why</strong> and the <strong>how</strong> behind every
+            solution.
           </p>
         </div>
 
@@ -99,7 +165,8 @@ const Skills = () => {
             </CardHeader>
             <CardContent>
               <p className="text-slate-600 text-sm">
-                My business background ensures every technical solution aligns with company goals and delivers measurable ROI.
+                My business background ensures every technical solution aligns
+                with company goals and delivers measurable ROI.
               </p>
             </CardContent>
           </Card>
@@ -113,7 +180,8 @@ const Skills = () => {
             </CardHeader>
             <CardContent>
               <p className="text-slate-600 text-sm">
-                I translate complex technical concepts into business language that executives and teams can understand and act upon.
+                I translate complex technical concepts into business language
+                that executives and teams can understand and act upon.
               </p>
             </CardContent>
           </Card>
@@ -127,15 +195,19 @@ const Skills = () => {
             </CardHeader>
             <CardContent>
               <p className="text-slate-600 text-sm">
-                Every line of code I write serves a business purpose. I optimize for outcomes, not just technical elegance.
+                Every line of code I write serves a business purpose. I optimize
+                for outcomes, not just technical elegance.
               </p>
             </CardContent>
           </Card>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+            <Card
+              key={index}
+              className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md"
+            >
               <CardHeader className="pb-4">
                 <CardTitle className="flex items-center gap-3 text-lg">
                   <div className="p-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg text-blue-600">
@@ -149,8 +221,12 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skillIndex}>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-slate-700">{skill.name}</span>
-                        <span className="text-xs text-slate-500">{skill.level}%</span>
+                        <span className="text-sm font-medium text-slate-700">
+                          {skill.name}
+                        </span>
+                        <span className="text-xs text-slate-500">
+                          {skill.level}%
+                        </span>
                       </div>
                       <Progress value={skill.level} className="h-2" />
                     </div>
@@ -160,24 +236,36 @@ const Skills = () => {
             </Card>
           ))}
         </div>
-        
+
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Business Tools</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+                Business Tools
+              </h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {businessTools.map((tool, index) => (
-                  <Badge key={index} variant="secondary" className="text-sm py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-colors">
+                  <Badge
+                    key={index}
+                    variant="secondary"
+                    className="text-sm py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-colors"
+                  >
                     {tool}
                   </Badge>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Development Tools</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+                Development Tools
+              </h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {techTools.map((tool, index) => (
-                  <Badge key={index} variant="secondary" className="text-sm py-2 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition-colors">
+                  <Badge
+                    key={index}
+                    variant="secondary"
+                    className="text-sm py-2 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition-colors"
+                  >
                     {tool}
                   </Badge>
                 ))}

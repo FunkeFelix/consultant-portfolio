@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code, Download } from "lucide-react";
+import ResumeDownload from "./ResumeDownload";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,15 +35,14 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+ 
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="p-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg">
-              <Code className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-slate-900">Felix Funke</span>
+            <img src="/public/logo.png" alt="Logo" className="w-14 h-14 rounded-full" />
+           
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Felix Funke</span>
           </div>
           
-          {/* Desktop Navigation */}
+   
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
@@ -54,17 +54,10 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="ml-4 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Resume
-            </Button>
+            <ResumeDownload />
           </nav>
           
-          {/* Mobile Menu Button */}
+     
           <button
             className="md:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
