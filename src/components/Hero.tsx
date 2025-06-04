@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
 
-      <div className="container mx-auto px-6 text-center relative z-10">
+      <div className="container mx-auto px-6 text-center relative z-10 mt-24 lg:mt-0">
         <div className="max-w-5xl mx-auto">
           <div className="mb-8 flex justify-center">
             <Avatar className="w-32 h-32 border-4 border-white shadow-2xl ring-4 ring-blue-200/50">
