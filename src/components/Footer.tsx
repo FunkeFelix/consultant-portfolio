@@ -1,8 +1,11 @@
+
 import { useState } from "react";
 import { Code, Heart, X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -19,14 +22,13 @@ const Footer = () => {
             </div>
 
             <p className="text-slate-400 mb-6 max-w-md mx-auto">
-              Building the future with intelligent code and innovative
-              solutions.
+              {t('footer.tagline')}
             </p>
 
             <div className="flex items-center justify-center gap-2 text-slate-400">
-              <span>Made with</span>
+              <span>{t('footer.made')}</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>and lots of</span>
+              <span>{t('footer.and')}</span>
               <Code className="w-4 h-4 text-blue-400" />
             </div>
 
@@ -35,10 +37,10 @@ const Footer = () => {
                 onClick={() => setIsImpressumOpen(true)}
                 className="underline hover:text-white"
               >
-                Impressum
+                {t('footer.impressum')}
               </button>
 
-              <div>© 2025 Felix Funke. All rights reserved.</div>
+              <div>© 2025 Felix Funke. {t('footer.rights')}</div>
             </div>
           </div>
         </div>
@@ -54,28 +56,28 @@ const Footer = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <h2 className="text-2xl font-semibold mb-4">Impressum</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('footer.impressum')}</h2>
 
             <div className="text-slate-700 space-y-2 text-sm leading-relaxed">
               <p>
-                <strong>Name:</strong> Felix Funke
+                <strong>{t('footer.impressum.name')}</strong> Felix Funke
               </p>
               <p>
-                <strong>Adresse:</strong> Nußdorfer Straße 9, 88662 Überlingen,
+                <strong>{t('footer.impressum.address')}</strong> Nußdorfer Straße 9, 88662 Überlingen,
                 Deutschland
               </p>
               <p>
-                <strong>E-Mail:</strong> felixfunke456(at)gmail.com
+                <strong>{t('footer.impressum.email')}</strong> felixfunke456(at)gmail.com
               </p>
               <p>
-                <strong>Telefon:</strong> +49 (0) 176 6336 4095
+                <strong>{t('footer.impressum.phone')}</strong> +49 (0) 176 6336 4095
               </p>
               <p>
-                <strong>Umsatzsteuer-ID gemäß § 27a UStG:</strong> DE 346946939
+                <strong>{t('footer.impressum.vat')}</strong> DE 346946939
               </p>
               <p>
                 <strong>
-                  Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV:
+                  {t('footer.impressum.responsible')}
                 </strong>
                 <br />
                 Felix Funke

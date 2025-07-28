@@ -1,5 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ChevronDown,
   Code2,
@@ -11,6 +13,8 @@ import {
 } from "lucide-react";
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
@@ -32,7 +36,7 @@ const Hero = () => {
                 className="object-cover"
               />
               <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-blue-600 to-indigo-600 text-white">
-                JD
+                FF
               </AvatarFallback>
             </Avatar>
           </div>
@@ -40,26 +44,24 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
             <Building2 className="w-4 h-4 text-blue-600" />
             <span className="text-sm font-medium text-slate-700">
-              Business + Tech = Exponential Impact
+              {t('hero.tagline')}
             </span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-            Where Business Meets
+            {t('hero.title.where')}
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
               {" "}
-              Innovation
+              {t('hero.title.innovation')}
             </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-600 mb-6 leading-relaxed">
-            BSc Business + Fullstack Development + LLM Workflows
+            {t('hero.subtitle')}
           </p>
 
           <p className="text-lg text-slate-600 mb-10 max-w-3xl mx-auto">
-            I bridge the gap between business strategy and technical execution,
-            transforming complex processes into intelligent, automated solutions
-            that drive real results.
+            {t('hero.description')}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 max-w-4xl mx-auto">
@@ -67,10 +69,10 @@ const Hero = () => {
               <Building2 className="w-8 h-8 text-blue-600" />
               <div>
                 <h3 className="font-bold text-slate-900 mb-1">
-                  Business Foundation
+                  {t('hero.business.title')}
                 </h3>
                 <p className="text-sm text-slate-600">
-                  BSc Business + Process Optimization
+                  {t('hero.business.desc')}
                 </p>
               </div>
             </div>
@@ -78,10 +80,10 @@ const Hero = () => {
               <Code2 className="w-8 h-8 text-indigo-600" />
               <div>
                 <h3 className="font-bold text-slate-900 mb-1">
-                  Technical Mastery
+                  {t('hero.technical.title')}
                 </h3>
                 <p className="text-sm text-slate-600">
-                  Fullstack Development Expertise
+                  {t('hero.technical.desc')}
                 </p>
               </div>
             </div>
@@ -89,9 +91,9 @@ const Hero = () => {
               <Brain className="w-8 h-8 text-purple-600" />
               <div>
                 <h3 className="font-bold text-slate-900 mb-1">
-                  AI Integration
+                  {t('hero.ai.title')}
                 </h3>
-                <p className="text-sm text-slate-600">LLM-Powered Automation</p>
+                <p className="text-sm text-slate-600">{t('hero.ai.desc')}</p>
               </div>
             </div>
           </div>
@@ -101,19 +103,19 @@ const Hero = () => {
             <div className="flex items-center gap-2 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg px-4 py-2 border border-blue-200">
               <TrendingUp className="w-4 h-4 text-blue-600" />
               <span className="text-slate-700 font-medium text-sm">
-                ROI-Focused Solutions
+                {t('hero.roi')}
               </span>
             </div>
             <div className="flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg px-4 py-2 border border-indigo-200">
               <Users className="w-4 h-4 text-indigo-600" />
               <span className="text-slate-700 font-medium text-sm">
-                Stakeholder Communication
+                {t('hero.stakeholder')}
               </span>
             </div>
             <div className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg px-4 py-2 border border-purple-200">
               <Zap className="w-4 h-4 text-purple-600" />
               <span className="text-slate-700 font-medium text-sm">
-                Process Transformation
+                {t('hero.process')}
               </span>
             </div>
           </div>
@@ -124,7 +126,7 @@ const Hero = () => {
               className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => scrollToSection("projects")}
             >
-              See Business Impact
+              {t('hero.cta.impact')}
             </Button>
             <Button
               variant="outline"
@@ -132,7 +134,7 @@ const Hero = () => {
               className="border-2 border-slate-300 hover:border-slate-400 hover:bg-white/80 backdrop-blur-sm transition-all duration-300"
               onClick={() => scrollToSection("contact")}
             >
-              Transform Your Business
+              {t('hero.cta.transform')}
             </Button>
           </div>
 

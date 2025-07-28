@@ -1,11 +1,15 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Code, Download } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import ResumeDownload from "./ResumeDownload";
+import LanguageToggle from "./LanguageToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,9 +27,9 @@ const Header = () => {
   };
 
   const navItems = [
-    { label: "Projects", id: "projects" },
-    { label: "Skills", id: "skills" },
-    { label: "Contact", id: "contact" },
+    { label: t('nav.projects'), id: "projects" },
+    { label: t('nav.skills'), id: "skills" },
+    { label: t('nav.contact'), id: "contact" },
   ];
 
   return (
@@ -51,7 +55,7 @@ const Header = () => {
             </span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -62,6 +66,7 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
+            <LanguageToggle />
             <ResumeDownload />
           </nav>
 
@@ -91,14 +96,17 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
-              <Button
-                variant="outline"
-                size="sm"
-                className="mt-4 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white w-fit"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Resume
-              </Button>
+              <div className="flex items-center gap-4 pt-2">
+                <LanguageToggle />
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white w-fit"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  {t('nav.resume')}
+                </Button>
+              </div>
             </nav>
           </div>
         )}
