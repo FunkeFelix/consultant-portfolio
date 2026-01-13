@@ -1,246 +1,152 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-
-import {
-  ExternalLink,
-  Bot,
-  Globe,
-  Smartphone,
-  Brain,
-  TrendingUp,
-  DollarSign,
-} from "lucide-react";
+import { ArrowUpRight, ToggleLeft, ToggleRight, Terminal, Code2, Cpu, Smartphone, TrendingUp, Layers } from "lucide-react";
 import { useState } from "react";
 
-const Projects = () => {
-  const projects = [
-    {
-      title: "AI-Driven Editorial Platform",
-      description:
-        "Architected a Next.js platform that automates 90 % of editorial workflows for small newsroom teams by embedding LLM-powered processes.",
-      image:
-        "https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      tech: [
-        "Next.js",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "OpenAI API",
-        "SSR & SSG",
-        "Docker",
-        "PostgreSQL",
-        "Supabase",
-        "Python",
-        "FastAPI",
-        "LiteLLM",
-      ],
-      review:
-        "Felix completely transformed our editorial workflow. Within weeks, we had a production-ready platform that slashed manual work by 90 %, and the team loves it.",
-      reviewLead: "Jane Doe, Editor-in-Chief at Ippen Digital",
-      category: "AI Journalism",
-      icon: <Bot className="w-5 h-5" />,
-      impact: "90 % Workflow Automation",
-    },
-    {
-      title: "Legacy React Modernization",
-      description:
-        "Led a React 15 → 18 upgrade, refactored 300+ components and boosted performance by 25 %, wiping out heaps of tech debt.",
-      image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-      tech: [
-        "React 18",
-        "TypeScript",
-        "React Testing Library",
-        "Playwright",
-        "Docker",
-      ],
-      review:
-        "Felix’s refactor was seamless. Our page-load times dropped by 25 %, and the entire codebase feels cleaner and more maintainable.",
-      reviewLead: "Max Müller, CTO at FORUM Informationssicherheit",
+const projects = [
+  {
+    title: "Agentic Studio",
+    company: "Ippen.Digital",
+    icon: Code2,
+    clientSpeak: "Enterprise AI workflow platform automating 90% of editorial tasks via graph-based agent execution.",
+    devSpeak: "I built a graph engine so complex I sometimes get lost in my own nodes. But hey, it writes articles automatically.",
+    tags: ["Next.js 16", "AI SDK", "Graph Engine", "WebSockets"],
+    link: null,
+    color: "text-blue-400"
+  },
+  {
+    title: "MCP Apps Editor",
+    company: "Ippen.Digital",
+    icon: Layers,
+    clientSpeak: "Multi-tenant SaaS workspace for managing AI applications with granular RBAC and billing.",
+    devSpeak: "It's basically a glorified JSON editor with a billing system attached. The CI/CD pipeline was the real MVP here.",
+    tags: ["SaaS", "RBAC", "Stripe", "Docker"],
+    link: null,
+    color: "text-purple-400"
+  },
+  {
+    title: "Vayn (LinkUp)",
+    company: "Founder",
+    icon: Smartphone,
+    clientSpeak: "A seamless mobile networking experience for events with QR-based discovery.",
+    devSpeak: "A Flutter app that survives solely on Firebase triggers and my sheer willpower. RevenueCat integration was a nightmare but we're rich now (kinda).",
+    tags: ["Flutter", "Firebase", "RevenueCat"],
+    link: "https://play.google.com/store/apps/details?id=demo.eventmanager",
+    color: "text-green-400"
+  },
+  {
+    title: "Conversion Engine",
+    company: "Handelsblatt",
+    icon: TrendingUp,
+    clientSpeak: "Optimized user journeys to increase subscription revenue by 15% via A/B testing.",
+    devSpeak: "I moved a button 20 pixels to the left and changed the color to green. Capitalism loved it.",
+    tags: ["A/B Testing", "Angular", "Analytics"],
+    link: "https://www.handelsblatt.com/",
+    color: "text-orange-400"
+  },
+  {
+    title: "Pitch Platform",
+    company: "PitchGuru",
+    icon: Cpu,
+    clientSpeak: "Collaborative design tool for corporate presentations reducing turnaround time by 20%.",
+    devSpeak: "Like Google Slides but with better branding and less crashing. Built a collaborative editor that didn't explode.",
+    tags: ["Next.js", "WebSockets", "AWS"],
+    link: "https://pitchguru.com/",
+    color: "text-pink-400"
+  }
+];
 
-      category: "Code Modernization",
-      icon: <Brain className="w-5 h-5" />,
-      impact: "25 % Performance Gain",
-    },
-    {
-      title: "Conversion-Optimisation for Handelsblatt",
-      description:
-        "Implemented data-driven A/B testing and UX tweaks for Europe’s leading economic media outlet, lifting subscription conversions by 15 %.",
-      image:
-        "https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80",
-      tech: [
-        "Angular",
-        "Analytics SDK",
-        "Playwright",
-        "Piano",
-        "Svelte",
-        "LIT",
-      ],
-      review:
-        "Thanks to Felix’s work, our subscription funnel is 15 % more efficient. His data-driven insights made all the difference.",
-      reviewLead: "Anna Schmidt, Head of Digital at Handelsblatt",
-      liveUrl: "https://www.handelsblatt.com/",
-      category: "Growth Engine",
-      icon: <TrendingUp className="w-5 h-5" />,
-      impact: "15 % Conversion Lift",
-    },
-    {
-      title: "PowerPoint Design Collaboration",
-      description:
-        "Built a Next.js platform that lets clients upload raw decks and co-create with designers, cutting turnaround time by 20 %.",
-      image:
-        "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      tech: [
-        "Next.js",
-        "Node.js",
-        "Stripe",
-        "MongoDB",
-        "Tailwind CSS",
-        "AWS S3",
-        "AWS Lambda",
-        "OAuth 2.0",
-      ],
-      review:
-        "Felix delivered a polished, user-friendly platform. Our design team now completes client decks 20 % faster, and client feedback has been outstanding.",
-      reviewLead: "Stefan Becker, Founder at PitchGuru",
-      liveUrl: "https://pitchguru.com/",
-      category: "Design Platform",
-      icon: <Globe className="w-5 h-5" />,
-      impact: "100 % Process Digitized",
-    },
-    {
-      title: "Event Manager App",
-      description:
-        "LinkUp is a sleek mobile app that connects event attendees through QR codes, enabling them to discover, connect, and chat with each other for 24 hours after the event. With real-time attendee lists, user profiles, and a premium unlock to see who’s coming, it’s the easiest way to spark meaningful connections on-site.",
-      image:
-        "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=3538&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      tech: [
-        "Flutter",
-        "Dart",
-        "Firebase Firestore",
-        "Firebase Auth",
-        "Cloud Functions",
-      ],
-      review:
-        "Felix’s Flutter expertise shone through: the app handles 1 K+ events daily with zero downtime, and the users love the sleek interface.",
-      reviewLead: "Laura Gonzalez, Product Manager at Eventure GmbH",
-      liveUrl:
-        "https://play.google.com/store/apps/details?id=demo.eventmanager",
-      category: "Mobile App",
-      icon: <Smartphone className="w-5 h-5" />,
-      impact: "Co-Founder & CTO",
-      full: true,
-    },
-  ];
+const Projects = () => {
+  const [isHonestMode, setIsHonestMode] = useState(false);
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Business Transformation Stories
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Real solutions that delivered measurable business impact. Each
-            project combines technical innovation with strategic business
-            thinking.
-          </p>
+    <section id="projects" className="py-24 bg-black relative">
+      <div className="container px-6 mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+           <div>
+             <h2 className="text-4xl md:text-6xl font-black text-white mb-2">
+               Proof I Work.
+             </h2>
+             <p className="text-neutral-400 text-lg">
+               Some things I built while not procrastinating.
+             </p>
+           </div>
+
+           <div 
+             className="flex items-center gap-3 bg-neutral-900 px-4 py-2 rounded-full border border-neutral-800 cursor-pointer hover:border-neutral-600 transition-colors select-none group"
+             onClick={() => setIsHonestMode(!isHonestMode)}
+           >
+             <span className={`text-sm font-bold transition-colors ${!isHonestMode ? "text-white" : "text-neutral-500"}`}>Client Speak</span>
+             <div className="relative">
+               {isHonestMode ? (
+                 <ToggleRight className="w-10 h-10 text-blue-500 transition-all" />
+               ) : (
+                 <ToggleLeft className="w-10 h-10 text-neutral-500 transition-all group-hover:text-neutral-400" />
+               )}
+             </div>
+             <span className={`text-sm font-bold transition-colors ${isHonestMode ? "text-blue-400" : "text-neutral-500"}`}>Dev Truth</span>
+           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Card
+            <motion.div
               key={index}
-              className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg overflow-hidden ${
-                project.full ? "md:col-span-2" : ""
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative bg-neutral-900/50 border border-neutral-800 rounded-3xl overflow-hidden hover:border-neutral-600 transition-all flex flex-col h-full"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-
-                <div className="absolute top-4 left-4 flex flex-col space-y-2 md:hidden">
-                  <Badge
-                    variant="secondary"
-                    className="bg-white/90 backdrop-blur-sm"
-                  >
-                    {project.icon}
-                    <span className="ml-2">{project.category}</span>
-                  </Badge>
-                  <Badge className="bg-green-500 hover:bg-green-600 text-white">
-                    {project.impact}
-                  </Badge>
-                </div>
-
-                <div className="hidden md:block">
-                  <div className="absolute top-4 left-4">
-                    <Badge
-                      variant="secondary"
-                      className="bg-white/90 backdrop-blur-sm"
-                    >
-                      {project.icon}
-                      <span className="ml-2">{project.category}</span>
-                    </Badge>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-green-500 hover:bg-green-600 text-white">
-                      {project.impact}
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                  {project.title}
-                </CardTitle>
-                <CardDescription className="text-slate-600 leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, techIndex) => (
-                    <Badge
-                      key={techIndex}
-                      variant="outline"
-                      className="text-xs"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="">
-                  {project.liveUrl && (
-                    <Button
-                      size="sm"
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-                      asChild
-                    >
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Project
+              <div className="p-8 flex flex-col flex-grow h-full">
+                 <div className="flex justify-between items-start mb-6">
+                    <div className={`p-3 rounded-2xl bg-neutral-950 border border-neutral-800 ${project.color}`}>
+                      <project.icon size={24} />
+                    </div>
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
+                        <ArrowUpRight size={20} />
                       </a>
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                    )}
+                 </div>
+
+                 <div className="mb-4">
+                    <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                    <span className="text-sm font-mono text-neutral-500">{project.company}</span>
+                 </div>
+
+                 <div className="flex-grow mb-6 relative min-h-[100px]">
+                   <AnimatePresence mode="wait">
+                     <motion.div 
+                       key={isHonestMode ? "honest" : "client"}
+                       initial={{ opacity: 0, y: 5 }}
+                       animate={{ opacity: 1, y: 0 }}
+                       exit={{ opacity: 0, y: -5 }}
+                       className="h-full"
+                     >
+                        {isHonestMode ? (
+                           <div className="bg-neutral-950 p-4 rounded-xl border border-neutral-800 font-mono text-sm text-green-400 shadow-inner">
+                              <span className="text-neutral-500 select-none">$ </span>
+                              <span className="typing-effect">{project.devSpeak}</span>
+                           </div>
+                        ) : (
+                           <p className="text-neutral-300 text-lg leading-relaxed">
+                              {project.clientSpeak}
+                           </p>
+                        )}
+                     </motion.div>
+                   </AnimatePresence>
+                 </div>
+
+                 <div className="flex flex-wrap gap-2 mt-auto">
+                   {project.tags.map(tag => (
+                     <Badge key={tag} variant="secondary" className="bg-neutral-950 border border-neutral-800 text-neutral-400 hover:text-white transition-colors">
+                       {tag}
+                     </Badge>
+                   ))}
+                 </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

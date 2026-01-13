@@ -15,7 +15,7 @@ const LanguageToggle = () => {
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition-colors"
+      className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors"
     >
       <Globe className="w-4 h-4" />
       <span className="font-medium">{language === 'en' ? 'DE' : 'EN'}</span>

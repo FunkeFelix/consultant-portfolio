@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Code, Heart, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -9,80 +8,71 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-slate-900 text-white py-12">
+      <footer className="bg-black py-12 border-t border-neutral-900">
         <div className="container mx-auto px-6">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <img
-                src={`${import.meta.env.BASE_URL}/logo.png`}
-                alt="Logo"
-                className="w-8 h-8 rounded-full"
-              />
-              <span className="text-xl font-bold">Felix Funke</span>
+          <div className="flex flex-col items-center justify-center">
+            
+            <div className="flex items-center gap-2 mb-6">
+               <div className="h-6 w-6 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500" />
+               <span className="text-lg font-bold text-white">Felix Funke</span>
             </div>
 
-            <p className="text-slate-400 mb-6 max-w-md mx-auto">
-              {t('footer.tagline')}
-            </p>
-
-            <div className="flex items-center justify-center gap-2 text-slate-400">
-              <span>{t('footer.made')}</span>
-              <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>{t('footer.and')}</span>
-              <Code className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center justify-center gap-2 text-neutral-500 text-sm mb-8">
+              <span>Built with</span>
+              <Heart className="w-3 h-3 text-red-500 fill-current" />
+              <span>and</span>
+              <Code className="w-3 h-3 text-blue-500" />
+              <span>in React & Tailwind</span>
             </div>
 
-            <div className="mt-6 pt-6 border-t border-slate-800 text-slate-500 text-sm flex flex-col items-center gap-2">
+            <div className="flex flex-col md:flex-row items-center gap-6 text-neutral-600 text-sm">
+              <div>© 2025 Felix Funke. All rights reserved.</div>
               <button
                 onClick={() => setIsImpressumOpen(true)}
-                className="underline hover:text-white"
+                className="hover:text-white transition-colors underline decoration-neutral-800 underline-offset-4"
               >
-                {t('footer.impressum')}
+                Legal Notice / Impressum
               </button>
-
-              <div>© 2025 Felix Funke. {t('footer.rights')}</div>
             </div>
           </div>
         </div>
       </footer>
 
       {isImpressumOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="relative bg-white rounded-lg max-w-md w-full mx-4 p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="relative bg-neutral-900 border border-neutral-800 rounded-2xl max-w-md w-full p-8 shadow-2xl">
             <button
               onClick={() => setIsImpressumOpen(false)}
-              className="absolute top-4 right-4 text-slate-600 hover:text-slate-900"
+              className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h2 className="text-2xl font-semibold mb-4">{t('footer.impressum')}</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">{t('footer.impressum')}</h2>
 
-            <div className="text-slate-700 space-y-2 text-sm leading-relaxed">
+            <div className="text-neutral-300 space-y-3 text-sm leading-relaxed">
               <p>
-                <strong>{t('footer.impressum.name')}</strong> Felix Funke
-              </p>
-              <p>
-                <strong>{t('footer.impressum.address')}</strong> Nußdorfer Straße 9, 88662 Überlingen,
+                <strong className="text-white block mb-1">Angaben gemäß § 5 TMG</strong>
+                Felix Funke<br />
+                Nußdorfer Straße 9<br />
+                88662 Überlingen<br />
                 Deutschland
               </p>
+              
+              <div className="h-px bg-neutral-800 my-4" />
+
               <p>
-                <strong>{t('footer.impressum.email')}</strong> felixfunke456(at)gmail.com
+                <strong className="text-white block mb-1">Kontakt</strong>
+                Email: felixfunke456@gmail.com<br />
+                Tel: +49 (0) 176 6336 4095
               </p>
+
+              <div className="h-px bg-neutral-800 my-4" />
+
               <p>
-                <strong>{t('footer.impressum.phone')}</strong> +49 (0) 176 6336 4095
-              </p>
-              <p>
-                <strong>{t('footer.impressum.vat')}</strong> DE 346946939
-              </p>
-              <p>
-                <strong>
-                  {t('footer.impressum.responsible')}
-                </strong>
-                <br />
-                Felix Funke
-                <br />
-                Nußdorfer Straße 9, 88662 Überlingen, Deutschland
+                <strong className="text-white block mb-1">Umsatzsteuer-ID</strong>
+                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+                DE 346946939
               </p>
             </div>
           </div>

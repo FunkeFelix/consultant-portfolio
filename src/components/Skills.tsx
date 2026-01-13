@@ -1,277 +1,153 @@
-import { Progress } from "@/components/ui/progress";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Code,
-  Database,
-  Cloud,
-  Brain,
-  Building2,
-  TrendingUp,
-  Users,
-  Zap,
-  Target,
-  BarChart3,
-  Smartphone,
-  Lock,
+import { motion } from "framer-motion";
+import { 
+  Code2, 
+  Database, 
+  Smartphone, 
+  Layout, 
+  Brain, 
+  Rocket, 
+  Server,
+  Terminal,
+  Cpu,
+  Globe,
+  CheckCircle2
 } from "lucide-react";
-import { ReactElement } from "react";
+
+const SkillCategory = ({ title, icon: Icon, skills, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay, duration: 0.5 }}
+    className="bg-neutral-900/50 border border-neutral-800 rounded-2xl p-6 hover:border-blue-500/30 transition-colors"
+  >
+    <div className="flex items-center gap-3 mb-6">
+      <div className="p-2 bg-neutral-800 rounded-lg text-blue-400">
+        <Icon size={20} />
+      </div>
+      <h3 className="text-xl font-bold text-white">{title}</h3>
+    </div>
+
+    <div className="space-y-4">
+      {skills.map((skill, index) => (
+        <div key={skill.name} className="group relative">
+          <div className="flex justify-between items-center mb-1">
+             <span className="text-neutral-300 font-medium group-hover:text-white transition-colors">
+               {skill.name}
+             </span>
+             <span className="text-xs text-neutral-500 font-mono group-hover:text-blue-400 transition-colors">
+               {skill.level}%
+             </span>
+          </div>
+          
+          <div className="h-2 bg-neutral-800 rounded-full overflow-hidden">
+             <motion.div 
+               initial={{ width: 0 }}
+               whileInView={{ width: `${skill.level}%` }}
+               viewport={{ once: true }}
+               transition={{ duration: 1, delay: delay + (index * 0.1) }}
+               className="h-full bg-gradient-to-r from-blue-600 to-purple-600 relative"
+             >
+                {/* Shine effect */}
+                <div className="absolute top-0 left-0 bottom-0 w-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+             </motion.div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </motion.div>
+);
 
 const Skills = () => {
-  interface Skill {
-    name: string;
-    level: number;
-  }
-
-  interface SkillCategory {
-    title: string;
-    icon: ReactElement;
-    skills: Skill[];
-  }
-
-  const skillCategories: SkillCategory[] = [
+  const categories = [
     {
-      title: "Business & Product Strategy",
-      icon: <Building2 className="w-6 h-6" />,
+      title: "Frontend Engineering",
+      icon: Layout,
       skills: [
-        { name: "Process Automation", level: 95 },
-        { name: "Technical Consulting", level: 92 },
-        { name: "Stakeholder Management", level: 90 },
-        { name: "Product Management", level: 88 },
-        { name: "Business Analysis", level: 90 },
-        { name: "Agile Methodologies", level: 85 },
-        { name: "Data-Driven Decision Making", level: 90 },
-      ],
-    },
-    {
-      title: "Frontend Development",
-      icon: <Code className="w-6 h-6" />,
-      skills: [
-        { name: "Next.js & React", level: 95 },
+        { name: "React 19 / Next.js 16", level: 98 },
         { name: "TypeScript", level: 95 },
         { name: "Tailwind CSS", level: 100 },
-        { name: "Shadcn/ui", level: 100 },
-        { name: "Vue.js", level: 80 },
-        { name: "HTML & CSS", level: 95 },
-        { name: "Angular", level: 60 },
-      ],
+        { name: "Framer Motion", level: 90 }
+      ]
     },
     {
-      title: "Backend & Database",
-      icon: <Database className="w-6 h-6" />,
+      title: "AI & Agentic Workflows",
+      icon: Brain,
       skills: [
-        { name: "Node.js", level: 90 },
-        { name: "Express.js", level: 88 },
-        { name: "Supabase/PostgreSQL", level: 90 },
-        { name: "MongoDB", level: 85 },
-        { name: "Python", level: 50 },
-        { name: "FastAPI", level: 50 },
-        { name: "GraphQL", level: 70 },
-      ],
+        { name: "Vercel AI SDK", level: 95 },
+        { name: "LangChain / LangGraph", level: 90 },
+        { name: "RAG Pipelines", level: 85 },
+        { name: "Prompt Engineering", level: 95 }
+      ]
     },
     {
-      title: "Mobile Development",
-      icon: <Smartphone className="w-6 h-6" />,
+      title: "Backend & Cloud",
+      icon: Server,
       skills: [
-        { name: "Flutter", level: 95 },
-        { name: "Bloc & Provider", level: 92 },
-        { name: "Firebase Integration", level: 93 },
-        { name: "iOS Deployment", level: 90 },
-      ],
+        { name: "Node.js / Bun", level: 90 },
+        { name: "Supabase / PostgreSQL", level: 95 },
+        { name: "GCP Cloud Run", level: 80 },
+        { name: "Docker", level: 85 }
+      ]
     },
     {
-      title: "AI & LLM Integration",
-      icon: <Brain className="w-6 h-6" />,
+      title: "Mobile (Flutter)",
+      icon: Smartphone,
       skills: [
-        { name: "OpenAI & GPT Models", level: 95 },
-        { name: "Generative AI Workflows", level: 93 },
-        { name: "LangChain", level: 90 },
-        { name: "LiteLLM", level: 60 },
-        { name: "LLM UX", level: 95 },
-      ],
-    },
-    {
-      title: "Cloud & DevOps",
-      icon: <Cloud className="w-6 h-6" />,
-      skills: [
-        { name: "Google Cloud Platform", level: 90 },
-        { name: "AWS Lambda & S3", level: 85 },
-        { name: "Docker & Kubernetes", level: 60 },
-        { name: "CI/CD (GitHub Actions)", level: 90 },
-        { name: "Infrastructure as Code", level: 60 },
-      ],
-    },
-    {
-      title: "Security & Authentication",
-      icon: <Lock className="w-6 h-6" />,
-      skills: [
-        { name: "Firebase Auth", level: 95 },
-        { name: "Supabase Auth", level: 95 },
-        { name: "OAuth & PKCE", level: 90 },
-        { name: "Role-Based Access Control", level: 90 },
-      ],
-    },
-  ];
-  const businessTools = [
-    "Figma",
-    "Notion",
-    "Slack",
-    "GitHub Projects",
-    "Google Workspace",
-    "Microsoft Teams",
-    "Jira",
-  ];
-
-  const techTools = [
-    "VS Code",
-    "GitHub",
-    "GitLab",
-    "Postman",
-    "Vercel",
-    "Supabase",
-    "Firebase",
-    "Docker",
-    "Terraform",
-    "Stripe",
-    "Twilio",
-    "RevenueCat",
+        { name: "Dart / Flutter", level: 95 },
+        { name: "Firebase Backend", level: 95 },
+        { name: "RevenueCat", level: 90 },
+        { name: "App Store Deploy", level: 100 }
+      ]
+    }
   ];
 
   return (
-    <section
-      id="skills"
-      className="py-20 bg-gradient-to-br from-slate-50 to-blue-50"
-    >
-      <div className="container mx-auto px-6">
+    <section id="skills" className="py-24 bg-neutral-950 relative overflow-hidden">
+       {/* Subtle grid background */}
+       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+
+      <div className="container px-6 mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            The Perfect Combination
+          <motion.div
+             initial={{ opacity: 0, scale: 0.9 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             viewport={{ once: true }}
+             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-4"
+          >
+            <CheckCircle2 size={14} />
+            Production Ready
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Technical Expertise
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Business acumen meets technical excellence. I understand both the{" "}
-            <strong>why</strong> and the <strong>how</strong> behind every
-            solution.
+          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
+            My stack is built for speed and scalability. I focus on modern tools that deliver real business value, not just hype.
           </p>
         </div>
 
-        {/* Value Proposition Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-          <Card className="text-center border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50">
-            <CardHeader>
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mb-4">
-                <Target className="w-8 h-8 text-white" />
-              </div>
-              <CardTitle className="text-lg">Strategic Thinking</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-slate-600 text-sm">
-                My business background ensures every technical solution aligns
-                with company goals and delivers measurable ROI.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center border-0 shadow-lg bg-gradient-to-br from-indigo-50 to-purple-50">
-            <CardHeader>
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mb-4">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <CardTitle className="text-lg">Stakeholder Bridge</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-slate-600 text-sm">
-                I translate complex technical concepts into business language
-                that executives and teams can understand and act upon.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center border-0 shadow-lg bg-gradient-to-br from-purple-50 to-pink-50">
-            <CardHeader>
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mb-4">
-                <TrendingUp className="w-8 h-8 text-white" />
-              </div>
-              <CardTitle className="text-lg">Impact Focused</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-slate-600 text-sm">
-                Every line of code I write serves a business purpose. I optimize
-                for outcomes, not just technical elegance.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
-          {skillCategories.map((category, index) => (
-            <Card
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {categories.map((category, index) => (
+            <SkillCategory 
               key={index}
-              className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md"
-            >
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-3 text-lg">
-                  <div className="p-2 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg text-blue-600">
-                    {category.icon}
-                  </div>
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-slate-700">
-                          {skill.name}
-                        </span>
-                        <span className="text-xs text-slate-500">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <Progress value={skill.level} className="h-2" />
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+              {...category}
+              delay={index * 0.1}
+            />
           ))}
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
-                Business Tools
-              </h3>
-              <div className="flex flex-wrap justify-center gap-3">
-                {businessTools.map((tool, index) => (
-                  <Badge
-                    key={index}
-                    variant="secondary"
-                    className="text-sm py-2 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 transition-colors"
-                  >
-                    {tool}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
-                Development Tools
-              </h3>
-              <div className="flex flex-wrap justify-center gap-3">
-                {techTools.map((tool, index) => (
-                  <Badge
-                    key={index}
-                    variant="secondary"
-                    className="text-sm py-2 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition-colors"
-                  >
-                    {tool}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* The "Fun" Element - Re-introducing a smaller, contained "Additional Tools" marquee */}
+        <div className="mt-20 pt-10 border-t border-neutral-900">
+           <p className="text-center text-neutral-500 text-sm mb-6 uppercase tracking-widest font-bold">Tools & Methodologies</p>
+           
+           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto opacity-70 hover:opacity-100 transition-opacity">
+              {["Git", "CI/CD", "Agile", "Jira", "Figma", "Storybook", "Jest", "Playwright", "Zod", "tRPC", "GraphQL", "WebSockets"].map((tool) => (
+                <span key={tool} className="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-md text-neutral-400 text-sm">
+                  {tool}
+                </span>
+              ))}
+           </div>
         </div>
       </div>
     </section>
